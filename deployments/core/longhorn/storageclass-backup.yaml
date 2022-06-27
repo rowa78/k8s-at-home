@@ -8,7 +8,7 @@ parameters:
   numberOfReplicas: "2"
   staleReplicaTimeout: "30"
   fromBackup: ""
-  allowVolumeExpansion: true
+  allowVolumeExpansion: "true"
   recurringJobs: '[
     {
       "name":"snap",
