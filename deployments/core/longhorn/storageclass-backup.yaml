@@ -7,6 +7,7 @@ provisioner: driver.longhorn.io
 parameters:
   numberOfReplicas: "2"
   staleReplicaTimeout: "30"
+  fsType: ext4
   allowVolumeExpansion: "true"
   recurringJobs: '[
     {
