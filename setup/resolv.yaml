@@ -1,0 +1,6 @@
+---
+- name: setup k3s-rancher
+  hosts: "all" 
+  roles:
+    - ronnywalter.resolv_nodes
+    

@@ -9,4 +9,4 @@ resources:
   - longhorn-crds
   - rancher-monitoring-crds
   - external-snapshotter
-  - rook-ceph
+  #- rook-ceph
