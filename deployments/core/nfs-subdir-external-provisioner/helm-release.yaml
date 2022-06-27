@@ -20,7 +20,7 @@ spec:
       repository: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner
       tag: v4.0.2
     nfs:
-      server: diskstation
+      server: 192.168.0.3
       path: /volume1/k8s
     storageClass:
       create: true

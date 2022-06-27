@@ -34,9 +34,9 @@ spec:
         notiftype: short                # Change notification type short/long you want to receive. notiftype is optional and Default notification type is short (if not specified)
     config:
       settings:
-        clustername: pi-cluster
+        clustername: k8s-at-home
         kubectl:
-          enabled: true
+          enabled: false
       resources:
         - name: v1/pods
           namespaces:
