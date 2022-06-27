@@ -161,8 +161,8 @@ spec:
         # existingClaim:
         # annotations:
         #  "helm.sh/resource-policy": keep
-        storageClass: "nfs-client"
-        storageSize: 20Gi
+        storageClass: "longhorn-backup"
+        storageSize: 10Gi
         # If PersistentDisk already exists you can create a PV for it by including the 2 following keypairs.
         # pdName: nexus-data-disk
         # fsType: ext4
