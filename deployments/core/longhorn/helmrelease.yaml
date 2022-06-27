@@ -15,4 +15,5 @@ spec:
         name: rancher-charts-release-2-6
         namespace: flux-system
   values:
-    defaultClassReplicaCount: 2
+    persistence:
+      defaultClassReplicaCount: 2
