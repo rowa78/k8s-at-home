@@ -5,7 +5,7 @@ resources:
   - cert-manager
   #- metallb
   #- ingress-nginx
-  #- wildcard-certificate
+  - wildcard-certificate
   #- networking  
   #- external-services
   #- rancher
