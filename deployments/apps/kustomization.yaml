@@ -4,9 +4,9 @@ kind: Kustomization
 resources:
   #- hass
   #- harbor
-  - jenkins
-  - nexus
-  - chartmuseum
+  #- jenkins
+  #- nexus
+  #- chartmuseum
   #- eve
   #- minecraft
-  - seat
+  #- seat
