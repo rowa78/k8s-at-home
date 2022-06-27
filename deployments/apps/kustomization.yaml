@@ -5,7 +5,7 @@ resources:
   #- hass
   #- harbor
   #- jenkins
-  #- nexus
+  - nexus
   #- chartmuseum
   #- eve
   #- minecraft
