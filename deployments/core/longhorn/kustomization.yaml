@@ -4,3 +4,4 @@ resources:
   - minio-secret.yaml
   - settings.yaml
   - helmrelease.yaml
+  - storageclass-backup.yaml
