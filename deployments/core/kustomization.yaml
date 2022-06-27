@@ -7,10 +7,10 @@ resources:
   - wildcard-certificate
   - ingress-nginx
   - networking  
-  #- external-services
+  - external-services
   - rancher
   #- kured
-  #- node-feature-discovery
+  - node-feature-discovery
   #- nfs-subdir-external-provisioner
   #- botkube
   #- monitoring
