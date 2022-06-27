@@ -18,11 +18,13 @@ spec:
   values:
     controller:
       ingressClass: nginx
-      replicaCount: 1
+      replicaCount: 3
+      kind: Deployment
       service:
-        type: LoadBalancer
-        loadBalancerIP: "${INGRESS_LB}"
-        externalTrafficPolicy: Local
+        type: NodePort
+        nodePorts:
+          http: 32080
+          https: 32443
       config:
         ssl-protocols: "TLSv1.3 TLSv1.2"
         proxy-body-size: "100m"
