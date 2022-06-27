@@ -19,5 +19,13 @@ metadata:
   name: create-default-disk-labeled-nodes
   namespace: longhorn-system
 value: "true"
+---
+apiVersion: longhorn.io/v1beta1
+kind: Setting
+metadata:
+  name: default-replica-count
+  namespace: longhorn-system
+value: "3"
+
 
 
