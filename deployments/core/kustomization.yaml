@@ -8,7 +8,7 @@ resources:
   - ingress-nginx
   - networking  
   #- external-services
-  #- rancher
+  - rancher
   #- kured
   #- node-feature-discovery
   #- nfs-subdir-external-provisioner
