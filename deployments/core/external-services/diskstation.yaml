@@ -64,7 +64,7 @@ metadata:
   name: diskstation
   namespace: ingress-nginx
   annotations:
-    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN}"    
+    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}"    
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
@@ -88,7 +88,7 @@ metadata:
   name: minio
   namespace: ingress-nginx  
   annotations:
-    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN}" 
+    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
@@ -112,7 +112,7 @@ metadata:
   name: minioconsole
   namespace: ingress-nginx  
   annotations:
-    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN}" 
+    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
@@ -136,7 +136,7 @@ metadata:
   name: note
   namespace: ingress-nginx
   annotations:
-    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN}" 
+    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
@@ -160,7 +160,7 @@ metadata:
   name: nexus
   namespace: ingress-nginx  
   annotations:
-    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN}"
+    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}"
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
@@ -185,7 +185,7 @@ metadata:
   name: docker
   namespace: ingress-nginx  
   annotations:
-    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN}"
+    external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}"
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
