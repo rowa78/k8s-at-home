@@ -1,0 +1,23 @@
+---
+apiVersion: longhorn.io/v1beta1
+kind: Setting
+metadata:
+  namespace: longhorn-system
+  name: backup-target
+value: s3://longhorn@us-east-1/
+---
+apiVersion: longhorn.io/v1beta1
+kind: Setting
+metadata:
+  name: backup-target-credential-secret
+  namespace: longhorn-system
+value: minio-secret
+---
+apiVersion: longhorn.io/v1beta1
+kind: Setting
+metadata:
+  name: create-default-disk-labeled-nodes
+  namespace: longhorn-system
+value: "true"
+
+

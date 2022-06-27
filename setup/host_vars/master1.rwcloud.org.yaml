@@ -1,0 +1,2 @@
+wireguard_address: "10.0.0.101/32"
+wireguard_endpoint: "master1.rwcloud.org"

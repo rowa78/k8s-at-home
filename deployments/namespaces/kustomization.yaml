@@ -1,0 +1,29 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cert-manager.yaml
+  - ingress-nginx.yaml  
+  - cattle-system.yaml  
+  - longhorn-system.yaml
+  - snapshot-controller.yaml  
+  - monitoring.yaml
+  - networking.yaml
+  - metallb.yaml
+  - kured.yaml
+  - node-feature-discovery.yaml
+  - nfs-subdir-external-provisioner.yaml
+  - botkube.yaml
+  - velero.yaml
+  - authentik.yaml
+  - oauth2-proxy.yaml
+  - hass.yaml
+  - harbor.yaml
+  - jenkins.yaml
+  - nexus.yaml
+  - chartmuseum.yaml
+  - minecraft.yaml
+  - seat.yaml
+  - cattle-monitoring-system.yaml
+  
+  

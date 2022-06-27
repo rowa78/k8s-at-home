@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cert-manager
+  - metallb
+  - ingress-nginx
+  - wildcard-certificate
+  - networking  
+  - external-services
+  - rancher
+  - kured
+  - node-feature-discovery
+  - nfs-subdir-external-provisioner
+  - botkube
+  #- monitoring
+  - velero
+  #- authentik
+  - oauth2-proxy
+  - longhorn
+  - rancher-monitoring

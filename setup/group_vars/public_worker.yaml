@@ -1,0 +1,4 @@
+k3s_agent:  
+  flannel-iface: 'wg0' 
+  node-label:
+    - "location=public"

@@ -1,0 +1,32 @@
+all:    
+  hosts:
+    children:
+      database:
+        hosts:
+          lb.rwcloud.org:
+      kubernetes:
+        master1:
+          ansible_host: master1.rwcloud.org
+          wireguard_address: "10.0.0.101/32"
+          wireguard_endpoint: "master1.rwcloud.org"
+          k3s_control_node: true  
+        master2:
+          ansible_host: master2.rwcloud.org
+          wireguard_address: "10.0.0.102/32"
+          wireguard_endpoint: "master2.rwcloud.org"
+          k3s_control_node: true  
+        master3:
+          ansible_host: master3.rwcloud.org
+          wireguard_address: "10.0.0.103/32"
+          wireguard_endpoint: "master3.rwcloud.org"
+          k3s_control_node: true  
+        worker1:
+          ansible_host: worker1.rwcloud.org
+          wireguard_address: "10.0.0.104/32"
+          wireguard_endpoint: "worker1.rwcloud.org"
+          k3s_control_node: true  
+        worker2:
+          ansible_host: worker2.rwcloud.org
+          wireguard_address: "10.0.0.105/32"
+          wireguard_endpoint: "worker2.rwcloud.org"
+          k3s_control_node: true  

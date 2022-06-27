@@ -1,0 +1,165 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: hass
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: home-assistant
+      version: 13.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: ${HASS_LB_IP}
+        externalTrafficPolicy: Local
+
+    nodeSelector: 
+      kubernetes.io/arch: arm64
+    image:
+      repository: homeassistant/home-assistant
+      tag: 2022.6.6    
+    env:
+      TZ: "Europe/Berlin"    
+      
+    hostNetwork: true
+    #dnsPolicy: ClusterFirstWithHostNet
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"     
+          external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN_2}" 
+          external-dns.alpha.kubernetes.io/ttl: "120"             
+        hosts:
+        - host: hass.${SECRET_DOMAIN_2}
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - hass.${SECRET_DOMAIN_2}
+    prometheus:
+      serviceMonitor:
+        enabled: true
+    probes:
+      liveness:
+        enabled: true
+      readiness:
+        enabled: true
+      startup:
+        enabled: true
+    persistence:
+      config:
+        enabled: true
+        storageClass: "nfs-client"
+        accessMode: ReadWriteOnce
+        size: "10Gi"
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
+    addons:
+      codeserver:
+        enabled: true
+        nodeSelector: 
+          kubernetes.io/arch: arm64
+        image:
+          repository: codercom/code-server
+          tag: 4.4.0
+        workingDir: "/config"
+        args:
+          - --user-data-dir
+          - "/config/.vscode"
+          - --auth
+          - "none"
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: "nginx"
+            nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
+            nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN_2}/oauth2/start
+            external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN_2}" 
+            external-dns.alpha.kubernetes.io/ttl: "120" 
+          hosts:
+          - host: hass-vscode.${SECRET_DOMAIN_2}
+            paths:
+            - path: /
+              pathType: Prefix
+          tls:
+          - hosts:
+            - hass-vscode.${SECRET_DOMAIN_2}
+        volumeMounts:
+        - name: config
+          mountPath: /config
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
+    resources:
+      limits:
+        memory: 2500Mi
+      requests:
+        cpu: 100m
+        memory: 1000Mi    
+
+    postgresql:
+      # -- enable the bundled bitnami postgresql chart
+      enabled: true
+      image:
+        registry: docker.io
+        repository: bitnami/postgresql
+        tag: 14.4.0
+        ## Specify a imagePullPolicy
+        ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+        ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+        ##
+        pullPolicy: IfNotPresent
+        ## Optionally specify an array of imagePullSecrets.
+        ## Secrets must be manually created in the namespace.
+        ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+        ## Example:
+        ## pullSecrets:
+        ##   - myRegistryKeySecretName
+        ##
+        pullSecrets: []
+        ## Set to true if you would like to see extra information on logs
+        ## It turns BASH and/or NAMI debugging in the image
+        ##
+        debug: true
+
+      volumePermissions:
+        ## @param volumePermissions.enabled Enable init container that changes volume permissions in the data directory (for cases where the default k8s `runAsUser` and `fsUser` values do not work)
+        ##
+        enabled: true
+      primary:
+        nodeSelector: 
+          kubernetes.io/arch: amd64
+      postgresqlUsername: "hass"
+      postgresqlPassword: "${SECRET_HASS_POSTGRES_PW}"
+      postgresqlDatabase: "hass"
+      persistence:
+        enabled: true
+        storageClass: "nfs-client"
+        accessModes:
+          - ReadWriteOnce
+
+    influxdb:                
+      enabled: false
+      architecture: standalone
+      database: home_assistant
+      authEnabled: false     
+      persistence:
+        enabled: true
+        # storageClass: ""
+      size: 30Gi
+      influxdb:
+        nodeSelector: 
+          kubernetes.io/arch: amd64
+      
