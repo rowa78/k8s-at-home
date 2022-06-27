@@ -22,7 +22,7 @@ spec:
         enabled: "true"
         accessModes:
           - ReadWriteMany
-        storageClassName: longhorn
+        storageClassName: nfs-client
         size: 10Gi
         subPath: null
         type: pvc
@@ -46,6 +46,6 @@ spec:
                 requests:
                   storage: 50Gi
               volumeMode: Filesystem
-              storageClassName: longhorn
+              storageClassName: nfs-client
 
 
