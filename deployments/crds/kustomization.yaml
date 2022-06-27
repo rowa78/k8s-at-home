@@ -8,3 +8,4 @@ resources:
   - traefik
   - longhorn-crds
   - rancher-monitoring-crds
+  - rook-ceph
