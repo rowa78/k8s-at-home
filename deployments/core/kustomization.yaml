@@ -17,6 +17,6 @@ resources:
   - velero
   #- authentik
   - oauth2-proxy
-  - longhorn
-  - rancher-monitoring
+  #- longhorn
+  #- rancher-monitoring
   #- rook-ceph
