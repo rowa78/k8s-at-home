@@ -1,0 +1,94 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: paperless
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts
+      chart: paperless
+      version: 8.8.3
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+
+  # See https://github.com/k8s-at-home/charts/blob/master/charts/paperless/values.yaml
+  values:
+    image:
+      repository: ghcr.io/paperless-ngx/paperless-ngx
+      tag: ngx-1.7.0
+
+    env:      
+      PAPERLESS_OCR_LANGUAGE: deu
+      PAPERLESS_TIME_ZONE: "Europe/Berlin"
+      PAPERLESS_CONSUMER_POLLING: "60"
+      PAPERLESS_REDIS: redis://localhost:6379
+      PAPERLESS_DBHOST: "${SECRET_PAPERLESS_POSTGRES_HOST}"
+      PAPERLESS_DBUSER: "${SECRET_PAPERLESS_POSTGRES_USER}"
+      PAPERLESS_DBPASS: "${SECRET_PAPERLESS_POSTGRES_PASSWORD}"
+
+    persistence:
+      data:
+        enabled: true
+        existingClaim: paperless-data-v1
+      media:
+        enabled: true
+        existingClaim: paperless-media-v1
+      consume:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${NAS02}"
+            path: /nas02/shares/dms-import
+        mountPath: /usr/src/paperless/consume
+      export:
+        enabled: true
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "${NAS02}"
+            path: /nas02/shares/dms-export
+        mountPath: /usr/src/paperless/export
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "note-multiple"
+        hosts:
+          - host: "dms.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: paperless-cert
+            hosts:
+              - "dms.${SECRET_DOMAIN}"
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 379M
+      limits:
+        cpu: 73m
+        memory: 1218M
+
+    additionalContainers:
+      - name: broker
+        image: redis:7.0
+        imagePullPolicy: IfNotPresent
+
+        resources:
+          requests:
+            cpu: 100m
+            memory: 1G
