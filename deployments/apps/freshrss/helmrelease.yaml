@@ -1,0 +1,47 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: freshrss
+  namespace: freshrss
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts
+      chart: freshrss
+      version: 6.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  
+  values:
+    image:
+      repository: ghcr.io/linuxserver/freshrss
+      tag: 1.19.2
+      pullPolicy: IfNotPresent
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: freshrss-config-v1
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
+          external-dns.alpha.kubernetes.io/ttl: "120" 
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN_2}/oauth2/start
+        hosts:
+          - host: "freshrss.${SECRET_DOMAIN_2}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "freshrss.${SECRET_DOMAIN_2}"

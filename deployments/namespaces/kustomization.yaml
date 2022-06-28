@@ -26,6 +26,7 @@ resources:
   - seat.yaml
   - cattle-monitoring-system.yaml
   - hajimari.yaml
+  - freshrss
   #- rook-ceph.yaml
   
   
