@@ -25,6 +25,7 @@ resources:
   - minecraft.yaml
   - seat.yaml
   - cattle-monitoring-system.yaml
+  - hajimari.yaml
   #- rook-ceph.yaml
   
   
