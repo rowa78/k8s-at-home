@@ -36,7 +36,7 @@ spec:
       #    - rook-ceph
       name: "Ronny"
       # -- Set to true to show all discovered applications by default.
-      defaultEnable: true
+      #defaultEnable: true
       namespaceSelector:
         any: "true"
       customApps:
