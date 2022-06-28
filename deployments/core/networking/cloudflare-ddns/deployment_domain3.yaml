@@ -17,9 +17,10 @@ spec:
     spec:
       nodeSelector: 
         kubernetes.io/arch: arm64
+        location: onprem
       containers:
       - name: cloudflare-ddns
-        image: oznu/cloudflare-ddns:aarch64        
+        image: oznu/cloudflare-ddns:aarch64
         env:
         - name: API_KEY
           valueFrom:

@@ -16,7 +16,8 @@ spec:
         app: cloudflare-ddns
     spec:
       nodeSelector: 
-        kubernetes.io/arch: arm64      
+        kubernetes.io/arch: arm64
+        location: onprem
       containers:
       - name: cloudflare-ddns
         image: oznu/cloudflare-ddns:aarch64        
