@@ -22,8 +22,8 @@ spec:
         enabled: "true"
         accessModes:
           - ReadWriteMany
-        storageClassName: nfs-client
-        size: 10Gi
+        storageClassName: longhorn
+        size: 1Gi
         subPath: null
         type: pvc
     prometheus:
@@ -44,8 +44,8 @@ spec:
                 - ReadWriteMany
               resources:
                 requests:
-                  storage: 50Gi
+                  storage: 15Gi
               volumeMode: Filesystem
-              storageClassName: nfs-client
+              storageClassName: longhorn
 
 
