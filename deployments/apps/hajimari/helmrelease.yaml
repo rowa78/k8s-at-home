@@ -34,6 +34,9 @@ spec:
       #    - monitoring
       #    - network
       #    - rook-ceph
+      name: "Ronny"
+      # -- Set to true to show all discovered applications by default.
+      defaultEnable: true
       customApps:
         - name: Diskstation
           url: "http://ds.${SECRET_DOMAIN}"
