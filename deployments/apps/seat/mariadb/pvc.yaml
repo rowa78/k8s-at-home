@@ -11,3 +11,4 @@ spec:
     requests:
       storage: 3Gi
   storageClassName: nfs-client
+
