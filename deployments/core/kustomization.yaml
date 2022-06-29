@@ -18,5 +18,5 @@ resources:
   #- authentik
   - oauth2-proxy
   #- longhorn
-  #- rancher-monitoring
+  - rancher-monitoring
   #- rook-ceph
