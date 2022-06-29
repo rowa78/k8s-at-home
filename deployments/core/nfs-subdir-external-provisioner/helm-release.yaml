@@ -16,6 +16,8 @@ spec:
         name: nfs-subdir-external-provisioner-charts
         namespace: flux-system
   values:
+    nodeSelector:
+      location=onprem
     image:
       repository: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner
       tag: v4.0.2
