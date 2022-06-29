@@ -5,10 +5,10 @@ resources:
   #- hass
   #- harbor
   #- jenkins
-  #- nexus
-  #- chartmuseum
+  - nexus
+  - chartmuseum
   #- eve
   #- minecraft
-  #- seat
-  #- hajimari
-  #- freshrss
+  - seat
+  - hajimari
+  - freshrss
