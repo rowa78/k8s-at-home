@@ -9,7 +9,7 @@ resources:
   - networking  
   - external-services
   - rancher
-  #- kured
+  - kured
   - node-feature-discovery
   - nfs-subdir-external-provisioner
   - botkube
