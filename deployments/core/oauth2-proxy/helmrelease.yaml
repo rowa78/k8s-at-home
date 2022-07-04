@@ -46,3 +46,4 @@ spec:
       enabled: true
       restricted_access: |-
         ${EMAIL}
+        
