@@ -90,6 +90,8 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
     kubernetes.io/ingress.class: "nginx"
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "nas"
 spec:
   rules:
   - host: minio.${SECRET_DOMAIN}
@@ -114,6 +116,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
     kubernetes.io/ingress.class: "nginx"
+    hajimari.io/enable: "true"
 spec:
   rules:
   - host: minioconsole.${SECRET_DOMAIN}
@@ -138,6 +141,8 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
     kubernetes.io/ingress.class: "nginx"
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "note-edit-outline"
 spec:
   rules:
   - host: note.${SECRET_DOMAIN}
