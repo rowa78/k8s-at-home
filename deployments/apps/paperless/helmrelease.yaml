@@ -103,3 +103,4 @@ spec:
       enabled: true
       auth:
         enabled: false
+        
