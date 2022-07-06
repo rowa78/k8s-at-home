@@ -31,6 +31,21 @@ spec:
       PAPERLESS_DBHOST: paperless-postgresql
       PAPERLESS_DBUSER: paperless
       PAPERLESS_DBPASS: paperless
+      PAPERLESS_ADMIN_USER:
+        valueFrom:
+          secretKeyRef:
+            name: paperless
+            key: USER
+      PAPERLESS_ADMIN_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: paperless
+            key: PASSWORD
+      PAPERLESS_ADMIN_MAIL:
+        valueFrom:
+          secretKeyRef:
+            name: paperless
+            key: EMAIL
 
     persistence:
       data:
