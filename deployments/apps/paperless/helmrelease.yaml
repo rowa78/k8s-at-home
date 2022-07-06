@@ -95,6 +95,8 @@ spec:
       persistence:
         enabled: true
         storageClass: "longhorn"
+      nodeSelector:
+        kubernetes.io/arch: amd64
 
     # -- Enable and configure redis subchart under this key.
     #    For more options see [redis chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/redis)
@@ -116,6 +118,8 @@ spec:
           ## @param master.persistence.size Persistent Volume size
           ##
           size: 8Gi
+        nodeSelector:
+          kubernetes.io/arch: amd64
       replica:
         persistence:
           ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
@@ -129,4 +133,5 @@ spec:
           ## @param master.persistence.size Persistent Volume size
           ##
           size: 8Gi
-          
+        nodeSelector:
+          kubernetes.io/arch: amd64
