@@ -27,7 +27,7 @@ spec:
       PAPERLESS_OCR_LANGUAGE: deu
       PAPERLESS_TIME_ZONE: "Europe/Berlin"
       PAPERLESS_CONSUMER_POLLING: "60"
-      PAPERLESS_REDIS: redis://paperless-redis-headless:6379
+      PAPERLESS_REDIS: redis://paperless-redis-master:6379
       PAPERLESS_DBHOST: paperless-postgresql
       PAPERLESS_DBUSER: paperless
       PAPERLESS_DBPASS: paperless
@@ -120,6 +120,7 @@ spec:
       enabled: true
       auth:
         enabled: false
+      architecture: standalone
       master:
         persistence:
           ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
