@@ -103,15 +103,29 @@ spec:
       enabled: true
       auth:
         enabled: false
-      persistence:
-        ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
-        ##
-        enabled: true
-        storageClass: "longhorn"
-        ## @param master.persistence.accessModes Persistent Volume access modes
-        ##
-        accessModes:
-          - ReadWriteMany
-        ## @param master.persistence.size Persistent Volume size
-        ##
-        size: 8Gi
+      master:
+        persistence:
+          ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
+          ##
+          enabled: true
+          storageClass: "longhorn"
+          ## @param master.persistence.accessModes Persistent Volume access modes
+          ##
+          accessModes:
+            - ReadWriteMany
+          ## @param master.persistence.size Persistent Volume size
+          ##
+          size: 8Gi
+      replica:
+        persistence:
+          ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
+          ##
+          enabled: true
+          storageClass: "longhorn"
+          ## @param master.persistence.accessModes Persistent Volume access modes
+          ##
+          accessModes:
+            - ReadWriteMany
+          ## @param master.persistence.size Persistent Volume size
+          ##
+          size: 8Gi
