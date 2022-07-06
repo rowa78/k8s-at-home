@@ -27,6 +27,7 @@ resources:
   - cattle-monitoring-system.yaml
   - hajimari.yaml
   - freshrss.yaml
+  - paperless.yaml
   #- rook-ceph.yaml
   
   

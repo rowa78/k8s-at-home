@@ -28,9 +28,9 @@ spec:
       PAPERLESS_TIME_ZONE: "Europe/Berlin"
       PAPERLESS_CONSUMER_POLLING: "60"
       PAPERLESS_REDIS: redis://localhost:6379
-      PAPERLESS_DBHOST: "${SECRET_PAPERLESS_POSTGRES_HOST}"
-      PAPERLESS_DBUSER: "${SECRET_PAPERLESS_POSTGRES_USER}"
-      PAPERLESS_DBPASS: "${SECRET_PAPERLESS_POSTGRES_PASSWORD}"
+      PAPERLESS_DBHOST: localhost
+      PAPERLESS_DBUSER: paperless
+      PAPERLESS_DBPASS: paperless
 
     persistence:
       data:
@@ -40,40 +40,41 @@ spec:
         enabled: true
         existingClaim: paperless-media-v1
       consume:
-        enabled: true
+        enabled: false
         type: custom
         volumeSpec:
           nfs:
-            server: "${NAS02}"
+            server: "192.168.0.3"
             path: /nas02/shares/dms-import
         mountPath: /usr/src/paperless/consume
       export:
-        enabled: true
+        enabled: false
         type: custom
         volumeSpec:
           nfs:
-            server: "${NAS02}"
+            server: "192.168.0.3"
             path: /nas02/shares/dms-export
         mountPath: /usr/src/paperless/export
 
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: "nginx"
         annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          external-dns.alpha.kubernetes.io/target: "dms.${SECRET_DOMAIN_2}" 
+          external-dns.alpha.kubernetes.io/ttl: "120" 
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN_2}/oauth2/start
           hajimari.io/enable: "true"
           hajimari.io/icon: "note-multiple"
         hosts:
-          - host: "dms.${SECRET_DOMAIN}"
+          - host: "dms.${SECRET_DOMAIN_2}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
-          - secretName: paperless-cert
-            hosts:
-              - "dms.${SECRET_DOMAIN}"
+          - hosts:
+              - "dms.${SECRET_DOMAIN_2}"
 
     resources:
       requests:
@@ -83,12 +84,22 @@ spec:
         cpu: 73m
         memory: 1218M
 
-    additionalContainers:
-      - name: broker
-        image: redis:7.0
-        imagePullPolicy: IfNotPresent
+    # -- Enable and configure postgresql database subchart under this key.
+    #    For more options see [postgresql chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/postgresql)
+    # @default -- See values.yaml
+    postgresql:
+      enabled: true
+      postgresqlUsername: paperless
+      postgresqlPassword: paperless
+      postgresqlDatabase: paperless
+      persistence:
+        enabled: true
+        storageClass: "longhorn"
 
-        resources:
-          requests:
-            cpu: 100m
-            memory: 1G
+    # -- Enable and configure redis subchart under this key.
+    #    For more options see [redis chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/redis)
+    # @default -- See values.yaml
+    redis:
+      enabled: true
+      auth:
+        enabled: false
