@@ -28,7 +28,7 @@ spec:
       PAPERLESS_TIME_ZONE: "Europe/Berlin"
       PAPERLESS_CONSUMER_POLLING: "60"
       PAPERLESS_REDIS: redis://localhost:6379
-      PAPERLESS_DBHOST: localhost
+      PAPERLESS_DBHOST: paperless-postgresql
       PAPERLESS_DBUSER: paperless
       PAPERLESS_DBPASS: paperless
 
