@@ -57,7 +57,6 @@ subsets:
     port: 9999
     protocol: TCP
 ---
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -70,7 +69,7 @@ metadata:
     hajimari.io/icon: "nas"
 spec:
   rules:
-  - host: ds.${SECRET_DOMAIN}
+  - host: diskstation.${SECRET_DOMAIN}
     http:
       paths:
       - backend:
@@ -82,7 +81,7 @@ spec:
         pathType: Prefix
   tls:
     - hosts:
-      - ds.${SECRET_DOMAIN}
+      - diskstation.${SECRET_DOMAIN}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
