@@ -28,6 +28,7 @@ resources:
   - hajimari.yaml
   - freshrss.yaml
   - paperless.yaml
+  - system-upgrade.yaml
   #- rook-ceph.yaml
   
   

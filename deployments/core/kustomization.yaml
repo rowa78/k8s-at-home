@@ -19,4 +19,5 @@ resources:
   - oauth2-proxy
   - longhorn
   - rancher-monitoring
+  - system-upgrade
   #- rook-ceph
