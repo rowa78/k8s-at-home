@@ -9,4 +9,5 @@ resources:
   - longhorn-crds
   - rancher-monitoring-crds
   - external-snapshotter
+  - system-upgrade-controller
   #- rook-ceph
