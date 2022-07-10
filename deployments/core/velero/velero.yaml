@@ -42,6 +42,7 @@ spec:
         config:
           region: us-east-1
       resticTimeout: 6h
+      defaultVolumesToRestic: true
     initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.4.1

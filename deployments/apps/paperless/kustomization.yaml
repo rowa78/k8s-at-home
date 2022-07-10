@@ -6,3 +6,4 @@ resources:
   - data-pvc.yaml
   - helmrelease.yaml
   - media-pvc.yaml
+  - velero-schedule.yaml
