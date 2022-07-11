@@ -24,7 +24,10 @@ spec:
       tag: 1.7.1
     nodeSelector:
       kubernetes.io/arch: amd64
-
+    securityContext:
+      fsGroup: 1000
+      runAsNonRoot: true
+      runAsUser: 1000
     env:
       PAPERLESS_OCR_LANGUAGE: deu
       PAPERLESS_TIME_ZONE: "Europe/Berlin"
