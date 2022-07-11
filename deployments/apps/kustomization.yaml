@@ -4,12 +4,12 @@ kind: Kustomization
 resources:
   #- hass
   #- harbor
-  #- jenkins
+  - jenkins
   #- nexus
   #- chartmuseum
   #- eve
   #- minecraft
-  #- seat
+  - seat
   - hajimari
   - freshrss
   - paperless
