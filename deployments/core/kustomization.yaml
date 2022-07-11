@@ -18,6 +18,6 @@ resources:
   #- authentik
   - oauth2-proxy
   - longhorn
-  - rancher-monitoring
+  #- rancher-monitoring
   - system-upgrade
   #- rook-ceph
