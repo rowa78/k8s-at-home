@@ -57,7 +57,7 @@ spec:
         enabled: true
         existingClaim: paperless-media-v1
       consume:
-        enabled: false
+        enabled: true
         type: custom
         volumeSpec:
           nfs:
@@ -65,7 +65,7 @@ spec:
             path: /volume1/dms-import
         mountPath: /usr/src/paperless/consume
       export:
-        enabled: false
+        enabled: true
         type: custom
         volumeSpec:
           nfs:
