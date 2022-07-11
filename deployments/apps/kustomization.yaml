@@ -10,6 +10,6 @@ resources:
   #- eve
   #- minecraft
   #- seat
-  #- hajimari
-  #- freshrss
-  #- paperless
+  - hajimari
+  - freshrss
+  - paperless
