@@ -109,11 +109,12 @@ spec:
       postgresqlUsername: paperless
       postgresqlPassword: paperless
       postgresqlDatabase: paperless
-      persistence:
-        enabled: true
-        storageClass: "longhorn-backup"
-      nodeSelector:
-        kubernetes.io/arch: amd64
+      primary:
+        persistence:
+          enabled: true
+          storageClass: "longhorn-backup"
+        nodeSelector:
+          kubernetes.io/arch: amd64
 
     # -- Enable and configure redis subchart under this key.
     #    For more options see [redis chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/redis)
