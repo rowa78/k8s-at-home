@@ -111,7 +111,7 @@ spec:
       postgresqlDatabase: paperless
       persistence:
         enabled: true
-        storageClass: "longhorn"
+        storageClass: "longhorn-backup"
       nodeSelector:
         kubernetes.io/arch: amd64
 
@@ -128,7 +128,7 @@ spec:
           ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
           ##
           enabled: true
-          storageClass: "longhorn"
+          storageClass: "longhorn-backup"
           ## @param master.persistence.accessModes Persistent Volume access modes
           ##
           accessModes:
@@ -143,7 +143,7 @@ spec:
           ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
           ##
           enabled: true
-          storageClass: "longhorn"
+          storageClass: "longhorn-backup"
           ## @param master.persistence.accessModes Persistent Volume access modes
           ##
           accessModes:
