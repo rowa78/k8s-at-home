@@ -6,6 +6,7 @@ resources:
   - thanos
   #- kube-prometheus-stack
   - loki
+  - promtail
   #- grafana
   #- flux-podmonitor.yaml
   - goldilocks
