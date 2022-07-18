@@ -5,7 +5,7 @@ resources:
   - rancher-monitoring
   - thanos
   #- kube-prometheus-stack
-  #- loki
+  - loki
   #- grafana
   #- flux-podmonitor.yaml
   - goldilocks

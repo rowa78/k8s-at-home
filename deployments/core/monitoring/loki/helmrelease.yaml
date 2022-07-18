@@ -3,48 +3,85 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: loki
-  namespace: monitoring
+  namespace: logs
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts
-      chart: loki-stack
-      version: 2.6.5
+      chart: loki
+      version: 2.13.1
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
         namespace: flux-system
       interval: 5m
   values:
-    promtail:
-      serviceMonitor:
-        enabled: true
-      extraScrapeConfigs:
-        - job_name: syslog
-          syslog:
-            listen_address: 0.0.0.0:1514
-            idle_timeout: 60s
-            label_structured_data: true
-            labels:
-              job: "syslog"
-          relabel_configs:
-            - source_labels: ['__syslog_connection_ip_address']
-              target_label: 'ip_address'
-            - source_labels: ['__syslog_message_severity']
-              target_label: 'severity'
-            - source_labels: ['__syslog_message_facility']
-              target_label: 'facility'
-            - source_labels: ['__syslog_message_hostname']
-              target_label: 'host'
-
+    replicas: 3
+    config:
+      distributor:
+        ring:
+          kvstore:
+            store: memberlist
+      ingester:
+        lifecycler:
+          ring:
+            kvstore:
+              store: memberlist
+            replication_factor: 1
+          final_sleep: 0s
+        chunk_idle_period: 5m
+        chunk_retain_period: 30s
+      memberlist:
+        abort_if_cluster_join_fails: false
+        bind_port: 7946
+        join_members:
+        - loki-headless.logs.svc.cluster.local:7946
+        max_join_backoff: 1m
+        max_join_retries: 10
+        min_join_backoff: 1s
+      schema_config:
+        configs:
+        - from: "2020-10-24"
+          store: boltdb-shipper
+          object_store: s3
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
+      storage_config:
+        boltdb_shipper:
+          active_index_directory: /data/loki/index
+          cache_location: /data/loki/index_cache
+          shared_store: s3
+      limits_config:
+        enforce_metric_name: false
+        reject_old_samples: true
+        reject_old_samples_max_age: 168h
+        retention_period: 1490h
+      compactor:
+        working_directory: /data/compactor
+        shared_store: s3
+        compaction_interval: 5m
+    serviceMonitor:
+      enabled: true
+    tolerations:
+    - key: "arm"
+      operator: "Exists"
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                    - loki
-        topologyKey: "kubernetes.io/hostname"
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - loki
+          topologyKey: "kubernetes.io/hostname"
+    storage_config:
+      aws:
+        bucketnames: loki
+        endpoint: minio.${SECRET_DOMAIN}
+        access_key: "${MINIO_ACCESS_KEY}"
+        secret_key: "${MINIO_SECRET_KEY}"
+        s3forcepathstyle: true        
