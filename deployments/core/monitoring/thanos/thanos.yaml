@@ -33,18 +33,18 @@ spec:
         sidecarsService: rancher-monitoring-thanos-discovery
         sidecarsNamespace: cattle-monitoring-system
       ingress:
-        enabled: true
+        enabled: false
         hostname: thanos.${SECRET_DOMAIN_2}
         annotations:
           kubernetes.io/ingress.class: nginx
-          #nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
-          #nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN_2}/oauth2/start
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN_2}/oauth2/start
           external-dns.alpha.kubernetes.io/hostname: "thanos.${SECRET_DOMAIN_2}"
           external-dns.alpha.kubernetes.io/ttl: "120"
           external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
         tls: true
     queryFrontend:
-      enabled: false
+      enabled: true
     bucketweb:
       enabled: true
     compactor:
