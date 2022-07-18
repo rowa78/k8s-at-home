@@ -34,6 +34,18 @@ spec:
         dashboards:
           enabled: true
           searchNamespace: ALL
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+          - name: 'default'
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
       dashboards:
         default:
           1-node-exporter:
