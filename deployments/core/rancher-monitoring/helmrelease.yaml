@@ -22,7 +22,7 @@ spec:
         enabled: "true"
         accessModes:
           - ReadWriteMany
-        storageClassName: longhorn
+        storageClassName: longhorn-backup
         size: 1Gi
         subPath: null
         type: pvc
@@ -37,16 +37,16 @@ spec:
             memory: 4000Mi
         nodeSelector:
           kubernetes.io/arch: amd64
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              accessModes:
-                - ReadWriteMany
-              resources:
-                requests:
-                  storage: 15Gi
-              volumeMode: Filesystem
-              storageClassName: longhorn
+#        storageSpec:
+#          volumeClaimTemplate:
+#            spec:
+#              accessModes:
+#                - ReadWriteMany
+#              resources:
+#                requests:
+#                  storage: 15Gi
+#              volumeMode: Filesystem
+#              storageClassName: longhorn
         thanos:
           image: quay.io/thanos/thanos:v0.27.0
           version: v0.24.0
