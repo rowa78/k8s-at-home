@@ -68,6 +68,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}"
         hosts: 
           - thanos-gateway.${SECRET_DOMAIN_2}
+        pathType: ImplementationSpecific
         tls: 
          - hosts:
            - thanos-gateway.${SECRET_DOMAIN_2}
