@@ -47,5 +47,16 @@ spec:
                   storage: 15Gi
               volumeMode: Filesystem
               storageClassName: longhorn
+        thanos:
+          image: quay.io/thanos/thanos:v0.27.0
+          version: v0.24.0
+          objectStorageConfig:
+            name: thanos-objstore-secret
+            key: objstore.yml
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
+        
 
 

@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    global:
+      storageClass: longhorn
     image:
       repository: raspbernetes/thanos
       tag: v0.23.1
