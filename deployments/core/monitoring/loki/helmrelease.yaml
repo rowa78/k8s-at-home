@@ -54,6 +54,12 @@ spec:
           active_index_directory: /data/loki/index
           cache_location: /data/loki/index_cache
           shared_store: s3
+        aws:
+          bucketnames: loki
+          endpoint: minio.${SECRET_DOMAIN}
+          access_key: "${MINIO_ACCESS_KEY}"
+          secret_key: "${MINIO_SECRET_KEY}"
+          s3forcepathstyle: true       
       limits_config:
         enforce_metric_name: false
         reject_old_samples: true
@@ -78,10 +84,5 @@ spec:
               values:
               - loki
           topologyKey: "kubernetes.io/hostname"
-    storage_config:
-      aws:
-        bucketnames: loki
-        endpoint: minio.${SECRET_DOMAIN}
-        access_key: "${MINIO_ACCESS_KEY}"
-        secret_key: "${MINIO_SECRET_KEY}"
-        s3forcepathstyle: true        
+    
+       
