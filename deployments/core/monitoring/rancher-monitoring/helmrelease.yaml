@@ -118,11 +118,6 @@ spec:
         datasources.yaml:
           apiVersion: 1
           datasources:
-          - name: Prometheus
-            type: prometheus
-            url: http://rancher-monitoring-prometheus:9090
-            access: proxy
-            isDefault: true          
           - name: loki
             type: loki
             access: proxy
