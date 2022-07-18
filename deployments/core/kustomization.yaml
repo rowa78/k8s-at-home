@@ -20,5 +20,5 @@ resources:
   - longhorn
   - rancher-monitoring
   - system-upgrade
-  #- thanos
+  - thanos
   #- rook-ceph
