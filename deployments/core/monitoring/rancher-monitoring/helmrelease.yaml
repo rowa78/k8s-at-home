@@ -15,6 +15,35 @@ spec:
         name: rancher-charts-release-2-6
         namespace: flux-system
   values:
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn-backup
+              resources:
+                requests:
+                  storage: 10Gi        
+        podAntiAffinity: "hard"
+    prometheus-node-exporter:
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: instance
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
     grafana:
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -94,8 +123,19 @@ spec:
           requests:
             cpu: 750m
             memory: 4000Mi
+        retention: 6h
+        enableAdminAPI: true
+        walCompression: true
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: longhorn
+              resources:
+                requests:
+                  storage: 10Gi
         nodeSelector:
           kubernetes.io/arch: amd64
+        podAntiAffinity: "hard"
 #        storageSpec:
 #          volumeClaimTemplate:
 #            spec:
@@ -114,7 +154,7 @@ spec:
             key: objstore.yml
         additionalScrapeConfigs:        
         - job_name: minio-job
-          bearer_token: ${PROMETHEUS_BEARER_TOKEN}
+          bearer_token: ${MINIO_PROMETHEUS_BEARER_TOKEN}
           metrics_path: /minio/v2/metrics/cluster
           scheme: https
           static_configs:
