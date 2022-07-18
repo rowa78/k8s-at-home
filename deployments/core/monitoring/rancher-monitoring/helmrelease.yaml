@@ -26,6 +26,14 @@ spec:
         size: 1Gi
         subPath: null
         type: pvc
+      sidecar:
+        datasources:
+          enabled: true
+          searchNamespace: ALL
+          # defaultDatasourceEnabled: false
+        dashboards:
+          enabled: true
+          searchNamespace: ALL
       dashboards:
         default:
           1-node-exporter:
