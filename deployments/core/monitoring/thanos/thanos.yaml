@@ -30,7 +30,7 @@ spec:
       replicaLabels:
         - replica
       dnsDiscovery:
-        sidecarsService: prometheus-thanos-discovery
+        sidecarsService: rancher-monitoring-thanos-discovery
         sidecarsNamespace: monitoring
       ingress:
         enabled: true
