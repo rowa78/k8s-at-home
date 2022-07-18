@@ -48,7 +48,7 @@ spec:
               target_label: 'host'
             - source_labels: ['__syslog_message_app_name']
               target_label: 'app'
-#    extraPorts:
+    extraPorts: {}
 #      syslog:
 #        name: tcp-syslog
 #        containerPort: 1514
