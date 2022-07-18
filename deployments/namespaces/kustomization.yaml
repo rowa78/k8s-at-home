@@ -29,6 +29,7 @@ resources:
   - freshrss.yaml
   - paperless.yaml
   - system-upgrade.yaml
+  - logs.yaml
   #- rook-ceph.yaml
   
   
