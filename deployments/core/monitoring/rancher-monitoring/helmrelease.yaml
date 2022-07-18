@@ -112,6 +112,14 @@ spec:
           objectStorageConfig:
             name: thanos-objstore-secret
             key: objstore.yml
+        additionalScrapeConfigs:        
+        - job_name: minio-job
+          bearer_token: ${PROMETHEUS_BEARER_TOKEN}
+          metrics_path: /minio/v2/metrics/cluster
+          scheme: https
+          static_configs:
+          - targets: 
+            - minio.${SECRET_DOMAIN}
       thanosService:
         enabled: true
       thanosServiceMonitor:
