@@ -31,7 +31,7 @@ spec:
         - replica
       dnsDiscovery:
         sidecarsService: rancher-monitoring-thanos-discovery
-        sidecarsNamespace: monitoring
+        sidecarsNamespace: cattle-monitoring-system
       ingress:
         enabled: true
         hostname: thanos.${SECRET_DOMAIN_2}
