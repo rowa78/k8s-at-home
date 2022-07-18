@@ -113,7 +113,20 @@ spec:
           # Ref: https://grafana.com/grafana/dashboards/11312          
           velero:
             url: https://grafana.com/api/dashboards/11055/revisions/2/download
-            datasource: Prometheus          
+            datasource: Prometheus   
+      datasources:
+        datasources.yaml:
+          apiVersion: 1
+          datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://rancher-monitoring-prometheus:9090
+            access: proxy
+            isDefault: true          
+          - name: loki
+            type: loki
+            access: proxy
+            url: http://loki.logs.svc.cluster.local:3100            
     prometheus:
       prometheusSpec:
         resources:
