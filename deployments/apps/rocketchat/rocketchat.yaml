@@ -100,7 +100,7 @@ spec:
         enabled: true
 
         auth:
-          # rootPassword:
+          rootPassword: rocketchat
           username: rocketchat
           password: rocketchat
           database: rocketchat
