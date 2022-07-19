@@ -79,7 +79,7 @@ spec:
             nodeSelectorTerms:
             - matchExpressions:
               - key: kubernetes.io/arch=amd64
-                operator: equals
+                operator: In
                 values:
                 - amd64
 
@@ -133,7 +133,7 @@ spec:
               nodeSelectorTerms:
               - matchExpressions:
                 - key: kubernetes.io/arch=amd64
-                  operator: equals
+                  operator: In
                   values:
                   - amd64
 
