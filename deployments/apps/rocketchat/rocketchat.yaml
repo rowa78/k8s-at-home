@@ -73,16 +73,15 @@ spec:
       ## Assign custom affinity rules to the RocketChat instance
       ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
       ##
-      affinity: {}
-      # nodeAffinity:
-      #   requiredDuringSchedulingIgnoredDuringExecution:
-      #     nodeSelectorTerms:
-      #     - matchExpressions:
-      #       - key: kubernetes.io/e2e-az-name
-      #         operator: In
-      #         values:
-      #         - e2e-az1
-      #         - e2e-az2
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch=amd64
+                operator: equals
+                values:
+                - amd64
 
       ## Use an existing secret file with the MongoDB Url and OplogUrl
       existingMongodbSecret: ""
@@ -127,6 +126,16 @@ spec:
           storageClass: "longhorn-backup"
           accessMode: ReadWriteOnce
           size: 8Gi
+        
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/arch=amd64
+                  operator: equals
+                  values:
+                  - amd64
 
         volumePermissions: { enabled: true }
 
