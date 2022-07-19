@@ -113,7 +113,6 @@ spec:
             minAvailable: 0
         pdb:
           minAvailable: 0
-
           # key:
 
         persistence:
