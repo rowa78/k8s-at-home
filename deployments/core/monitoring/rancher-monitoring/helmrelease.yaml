@@ -64,6 +64,7 @@ spec:
                 alertname: InfoInhibitor
               receiver: 'null'        
             - receiver: 'slack-notifications'
+            
     prometheus-node-exporter:
       prometheus:
         monitor:
