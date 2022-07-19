@@ -27,7 +27,7 @@ spec:
         podAntiAffinity: "hard"
       config:
         global:
-          slack_api_url: $DISCORD_ALERTMANAGER_WEBHOOK_URL
+          slack_api_url: ${DISCORD_ALERTMANAGER_WEBHOOK_URL}
           resolve_timeout: 5m
         receivers:
         - name: 'null'
