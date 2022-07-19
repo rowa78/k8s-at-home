@@ -30,6 +30,7 @@ resources:
   - paperless.yaml
   - system-upgrade.yaml
   - logs.yaml
+  - rocketchat.yaml
   #- rook-ceph.yaml
   
   
