@@ -58,6 +58,7 @@ spec:
         enabled: true
         ingressClassName: "nginx"
         annotations:
+          external-dns.alpha.kubernetes.io/hostname: "hajimari.${SECRET_DOMAIN_2}"
           external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
           external-dns.alpha.kubernetes.io/ttl: "120" 
           nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
