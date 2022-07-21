@@ -202,13 +202,13 @@ spec:
             url: http://loki.logs.svc.cluster.local:3100            
     prometheus:
       prometheusSpec:
-        resources: {}
-#          limits:
-#            cpu: 1000m
-#            memory: 6000Mi
-#          requests:
-#            cpu: 750m
-#            memory: 4000Mi
+        resources: 
+          limits:
+            cpu: 3000m
+            memory: 6000Mi
+          requests:
+            cpu: 750m
+            memory: 4000Mi
         retention: 6h
         enableAdminAPI: true
         walCompression: true
