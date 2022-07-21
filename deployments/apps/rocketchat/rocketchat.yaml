@@ -13,7 +13,11 @@ spec:
           kind: HelmRepository
           name: rocketchat
           namespace: flux-system
-    values:      
+    values:  
+      image:
+        repository: registry.rocket.chat/rocketchat/rocket.chat
+        tag: 4.8.2
+        pullPolicy: IfNotPresent    
       
       host: rocketchat.${SECRET_DOMAIN_2}
 
