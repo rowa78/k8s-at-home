@@ -25,28 +25,28 @@ spec:
                 requests:
                   storage: 10Gi        
         podAntiAffinity: "hard"
-      config:        
-        receivers:
-        - name: 'null'
-        - name: 'rocketchat'
-          webhook_configs:
-            - send_resolved: false
-              url: '${ROCKETCHAT_WEBHOOK_URL}'                          
-        route:
-          # group_by: ['alertname', 'job']
-          # group_wait: 30s
-          # group_interval: 5m
-          # repeat_interval: 6h
-          receiver: 'rocketchat'
-          # receiver: 'pagerduty'
-          routes:
-            - match:
-                alertname: Watchdog
-              receiver: 'rocketchat'
-            - match:
-                alertname: InfoInhibitor
-              receiver: 'rocketchat'        
-            - receiver: 'rocketchat'
+#      config:        
+#        receivers:
+#        - name: 'null'
+#        - name: 'rocketchat'
+#          webhook_configs:
+#            - send_resolved: false
+#              url: '${ROCKETCHAT_WEBHOOK_URL}'                          
+#        route:
+#          # group_by: ['alertname', 'job']
+#          # group_wait: 30s
+#          # group_interval: 5m
+#          # repeat_interval: 6h
+#          receiver: 'rocketchat'
+#          # receiver: 'pagerduty'
+#          routes:
+#            - match:
+#                alertname: Watchdog
+#              receiver: 'rocketchat'
+#            - match:
+#                alertname: InfoInhibitor
+#              receiver: 'rocketchat'        
+#            - receiver: 'rocketchat'
             
     prometheus-node-exporter:
       prometheus:
@@ -59,7 +59,7 @@ spec:
               sourceLabels:
                 - __meta_kubernetes_pod_node_name
               targetLabel: instance
-      resources:
+      resources: {}
         # We usually recommend not to specify default resources and to leave this as a conscious
         # choice for the user. This also increases chances charts run on environments with little
         # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -67,9 +67,9 @@ spec:
 #        limits:
 #          cpu: 500m
 #          memory: 100Mi
-        requests:
-          cpu: 100m
-          memory: 30Mi
+#        requests:
+#          cpu: 100m
+#          memory: 30Mi
     kubelet:
       enabled: true
       serviceMonitor:
@@ -202,13 +202,13 @@ spec:
             url: http://loki.logs.svc.cluster.local:3100            
     prometheus:
       prometheusSpec:
-        resources:
+        resources: {}
 #          limits:
 #            cpu: 1000m
 #            memory: 6000Mi
-          requests:
-            cpu: 750m
-            memory: 4000Mi
+#          requests:
+#            cpu: 750m
+#            memory: 4000Mi
         retention: 6h
         enableAdminAPI: true
         walCompression: true
