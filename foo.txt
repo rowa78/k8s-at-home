@@ -1,0 +1,21 @@
+receivers:
+- name: 'null'
+- name: 'rocketchat'
+  webhook_configs:
+    - send_resolved: true
+      url: 'https://rocketchat.rwcloud.org/hooks/62d90a9ce0a6aae099ac20d2/4WB32DNHj7Xdo4B5bQfD8He7fAz3FWAaCkudzh7dusT6TcFS'                          
+route:
+  # group_by: ['alertname', 'job']
+  # group_wait: 30s
+  # group_interval: 5m
+  # repeat_interval: 6h
+  receiver: 'rocketchat'
+  # receiver: 'pagerduty'
+  routes:
+    - match:
+        alertname: Watchdog
+      receiver: 'rocketchat'
+    - match:
+        alertname: InfoInhibitor
+      receiver: 'rocketchat'        
+    - receiver: 'rocketchat'
