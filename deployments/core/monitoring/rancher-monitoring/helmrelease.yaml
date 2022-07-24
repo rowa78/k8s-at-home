@@ -25,29 +25,29 @@ spec:
                 requests:
                   storage: 10Gi        
         podAntiAffinity: "hard"
-        config:
-          global:
-            resolve_timeout: 5m
-          route:
-            receiver: "rocketchat"
-            group_by:
-            - job
-            routes:
-            - receiver: "null"
-              match:
-                alertname: Watchdog
-            - receiver: "rocketchat"
-            group_wait: 30s
-            group_interval: 5m
-            repeat_interval: 12h
-          receivers:
-          - name: "null"
-          - name: 'rocketchat'
-            webhook_configs:
-              - send_resolved: true
-                url: '${ROCKETCHAT_WEBHOOK_URL}'
-          templates:
-          - /etc/alertmanager/config/*.tmpl
+      config:
+        global:
+          resolve_timeout: 5m
+        route:
+          receiver: "rocketchat"
+          group_by:
+          - job
+          routes:
+          - receiver: "null"
+            match:
+              alertname: Watchdog
+          - receiver: "rocketchat"
+          group_wait: 30s
+          group_interval: 5m
+          repeat_interval: 12h
+        receivers:
+        - name: "null"
+        - name: 'rocketchat'
+          webhook_configs:
+            - send_resolved: true
+              url: '${ROCKETCHAT_WEBHOOK_URL}'
+        templates:
+        - /etc/alertmanager/config/*.tmpl
 #      config:        
 #        receivers:
 #        - name: 'null'
