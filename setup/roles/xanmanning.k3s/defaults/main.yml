@@ -42,7 +42,7 @@ k3s_skip_env_checks: false
 k3s_install_dir: /usr/local/bin
 
 # Install using hard links rather than symbolic links
-k3s_install_hard_links: false
+k3s_install_hard_links: true
 
 # A list of templates used for configuring the server.
 k3s_server_config_yaml_d_files: []

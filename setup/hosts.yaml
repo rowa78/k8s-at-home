@@ -17,7 +17,12 @@ all:
         worker2.rwcloud.org:
     local_worker:        
       hosts:
-        pi-3
+        pi-0:
+        pi-1:
+        pi-2:
+        pi-3:
+        pc-0:
+        pc-1:
     worker:
       children:
         public_worker:
@@ -31,4 +36,9 @@ all:
       children:
         loadbalancer:
         master:
-        public_worker:        
+        public_worker: 
+    wireguard_peers:
+      hosts:
+        pi-wg:      
+      children:
+        public_nodes:

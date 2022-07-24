@@ -3,6 +3,8 @@ wireguard_endpoint: "lb.rwcloud.org"
 
 k8s_haproxy_listen_adress: "10.0.0.100"
 
+wireguard_allowed_ips: "10.0.0.100/32"
+
 harden_linux_ufw_rules:
   - rule: "allow"
     to_port: "80"

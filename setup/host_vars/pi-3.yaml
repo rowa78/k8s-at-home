@@ -1,18 +1,2 @@
-wireguard_address: "10.0.0.109/32"
 ansible_user: ubuntu
 ansible_host: 192.168.0.103
-wireguard_endpoint: "ipv4.ronnywalter.de"
-wireguard_port: 51000
-
-wireguard_postup:
-  - iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-  - iptables -A FORWARD -i %i -j ACCEPT
-  - iptables -A FORWARD -o %i -j ACCEPT
-wireguard_postdown:
-  - iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-  - iptables -D FORWARD -i %i -j ACCEPT
-  - iptables -D FORWARD -o %i -j ACCEPT
-
-
-wireguard_allowed_ips: "10.0.0.109/32, 192.168.0.1/32, 192.168.0.3/32"
-wireguard_persistent_keepalive: 25

@@ -73,6 +73,11 @@
     name: nfs-common
     state: present
 
+- name: install open-iscsi
+  package:
+    name: open-iscsi
+    state: present
+
 - name: Install aptitude
   package:
     name: aptitude

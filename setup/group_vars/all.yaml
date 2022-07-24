@@ -10,6 +10,7 @@ harden_linux_ufw_allow_networks:
   - "10.0.0.0/24"  
   - "10.42.0.0/24"  
   - "10.43.0.0/24"  
+  - "192.168.0.0/24" 
 
 harden_linux_ufw_defaults_user:
   "^DEFAULT_FORWARD_POLICY": 'DEFAULT_FORWARD_POLICY="ACCEPT"'
@@ -59,12 +60,13 @@ postgresql_global_config_options:
     value: '10.0.0.100'    
 
 
+
 #wireguard_allowed_ips: "10.0.0.0/24"
 
-wireguard_unmanaged_peers:
-  mac:
-    public_key: V25CgJg2DNw31r7z/U4JGnSK5skcHA5EvP8H0HDNUXc=
+#wireguard_unmanaged_peers:
+#  mac:
+#    public_key: V25CgJg2DNw31r7z/U4JGnSK5skcHA5EvP8H0HDNUXc=
     # preshared_key: ... e.g. from ansible-vault?
-    allowed_ips: 10.0.0.199/32
+#    allowed_ips: 10.0.0.199/32
     #endpoint: ""
-    persistent_keepalive: 25
+#    persistent_keepalive: 25
