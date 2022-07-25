@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   #- hass
   #- harbor
-  #- jenkins
+  - jenkins
   - nexus
   #- chartmuseum
   #- eve
@@ -12,5 +12,5 @@ resources:
   - seat
   - hajimari
   - freshrss
-  - paperless
+  #- paperless
   - rocketchat
