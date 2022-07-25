@@ -129,7 +129,7 @@ spec:
           ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
           ##   GKE, AWS & OpenStack)
           ##
-          storageClass: "longhorn-backup"
+          storageClass: "nfs-client"
           accessMode: ReadWriteOnce
           size: 8Gi
         
@@ -152,7 +152,7 @@ spec:
         ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
         ##   GKE, AWS & OpenStack)
         ##
-        storageClass: "longhorn-backup"
+        storageClass: "nfs-client"
         accessMode: ReadWriteOnce
         size: 8Gi
 
