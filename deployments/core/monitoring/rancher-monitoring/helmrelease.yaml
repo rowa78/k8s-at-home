@@ -108,7 +108,7 @@ spec:
         enabled: "true"
         accessModes:
           - ReadWriteMany
-        storageClassName: longhorn-backup
+        storageClassName: nfs-client
         size: 1Gi
         subPath: null
         type: pvc

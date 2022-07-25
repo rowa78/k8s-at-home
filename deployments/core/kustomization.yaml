@@ -18,7 +18,7 @@ resources:
   - velero
   #- authentik
   - oauth2-proxy
-  - longhorn
+  #- longhorn
   #- rancher-monitoring
   - system-upgrade
   #- thanos
