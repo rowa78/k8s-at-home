@@ -12,5 +12,5 @@ resources:
   - seat
   - hajimari
   - freshrss
-  - paperless
+  #- paperless
   - rocketchat

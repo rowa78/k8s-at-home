@@ -108,7 +108,7 @@ spec:
       primary:
         persistence:
           enabled: true
-          storageClass: "longhorn-backup"
+          storageClass: "nfs-client"
         nodeSelector:
           kubernetes.io/arch: amd64
 
@@ -125,7 +125,7 @@ spec:
           ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
           ##
           enabled: true
-          storageClass: "longhorn-backup"
+          storageClass: "nfs-client"
           ## @param master.persistence.accessModes Persistent Volume access modes
           ##
           accessModes:
@@ -140,7 +140,7 @@ spec:
           ## @param master.persistence.enabled Enable persistence on Redis&reg; master nodes using Persistent Volume Claims
           ##
           enabled: true
-          storageClass: "longhorn-backup"
+          storageClass: "nfs-client"
           ## @param master.persistence.accessModes Persistent Volume access modes
           ##
           accessModes:
