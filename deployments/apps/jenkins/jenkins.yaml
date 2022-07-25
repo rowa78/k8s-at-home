@@ -28,7 +28,6 @@ spec:
           existingSecret: "jenkins-admin-secret"
           userKey: jenkins-admin-user
           passwordKey: jenkins-admin-password
-       
 
         # List of plugins to be install during Jenkins controller start
         installPlugins:
