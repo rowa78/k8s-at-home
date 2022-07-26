@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     global:
-      storageClass: longhorn
+      storageClass: nfs-client
     image:
       repository: raspbernetes/thanos
       tag: v0.23.1
@@ -54,7 +54,7 @@ spec:
     storegateway:
       enabled: true
       persistence:
-        enabled: true
+        enabled: false
         size: 20Gi
     ruler:
       enabled: false

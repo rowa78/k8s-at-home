@@ -20,7 +20,7 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              storageClassName: longhorn-backup
+              storageClassName: nfs-client
               resources:
                 requests:
                   storage: 10Gi        
@@ -235,13 +235,13 @@ spec:
         retention: 6h
         enableAdminAPI: true
         walCompression: true
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: longhorn
-              resources:
-                requests:
-                  storage: 10Gi
+#        storageSpec:
+#          volumeClaimTemplate:
+#            spec:
+#              storageClassName: longhorn
+#              resources:
+#                requests:
+#                  storage: 10Gi
         nodeSelector:
           kubernetes.io/arch: amd64
         podAntiAffinity: "hard"
