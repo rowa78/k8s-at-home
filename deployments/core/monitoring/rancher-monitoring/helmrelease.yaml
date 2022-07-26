@@ -214,7 +214,11 @@ spec:
           # Ref: https://grafana.com/grafana/dashboards/11312          
           velero:
             url: https://grafana.com/api/dashboards/11055/revisions/2/download
-            datasource: Prometheus   
+            datasource: Prometheus
+          jenkins:
+            gnetId: 9964
+            revision: 1
+            datasource: Prometheus
       datasources:
         datasources.yaml:
           apiVersion: 1
