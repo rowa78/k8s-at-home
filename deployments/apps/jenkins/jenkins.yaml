@@ -40,6 +40,8 @@ spec:
           - pipeline-utility-steps:latest
           - config-file-provider
           - kubernetes-cli
+          - prometheus
+          - dark-theme
 
         # Set to false to download the minimum required version of all dependencies.
         installLatestPlugins: true
