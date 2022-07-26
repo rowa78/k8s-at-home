@@ -151,7 +151,7 @@ spec:
 
       persistence:
         enabled: true
-        accessMode: ReadWriteOnce
+        accessMode: ReadWriteMany
         ## If defined, storageClass: <storageClass>
         ## If set to "-", storageClass: "", which disables dynamic provisioning
         ## If undefined (the default) or set to null, no storageClass spec is
