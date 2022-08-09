@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./pi-deployments/repositories
+  path: ./global-deployments/repositories
   prune: true
   sourceRef:
     kind: GitRepository
