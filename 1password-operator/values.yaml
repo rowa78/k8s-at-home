@@ -23,8 +23,8 @@ connect:
     values: {}
   imagePullPolicy: IfNotPresent
   version: "{{ .Chart.AppVersion }}"
-  nodeSelector: 
-    kubernetes.io/arch: amd64
+#  nodeSelector: 
+#    kubernetes.io/arch: amd64
   probes:
     liveness: true
     readiness: true
@@ -40,7 +40,7 @@ operator:
   imagePullPolicy: IfNotPresent
   imageRepository: 1password/onepassword-operator
   pollingInterval: 10
-  version: "1.0.1"
+  #version: "1.0.1"
   nodeSelector: {}
   annotations: {}
   labels: {}
