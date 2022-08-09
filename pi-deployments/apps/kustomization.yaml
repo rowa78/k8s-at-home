@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  #- hass
+  #- harbor
+  - jenkins
+  #- nexus
+  #- chartmuseum
+  #- eve
+  #- minecraft
+  - seat
+  - hajimari
+  - freshrss
+  - paperless
+  - rocketchat
