@@ -20,6 +20,6 @@ resources:
   - oauth2-proxy
   - longhorn
   #- rancher-monitoring
-  - system-upgrade
+  #- system-upgrade
   #- thanos
   #- rook-ceph
