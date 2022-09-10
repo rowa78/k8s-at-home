@@ -693,7 +693,12 @@ spec:
       ##   kubernetes.io/ingress.class: nginx
       ##   cert-manager.io/cluster-issuer: cluster-issuer-name
       ##
-      annotations: {}
+      annotations: 
+          external-dns.alpha.kubernetes.io/hostname: "minioconsole.${SECRET_DOMAIN_2}"
+          external-dns.alpha.kubernetes.io/target: "lb.${SECRET_DOMAIN_2}" 
+          external-dns.alpha.kubernetes.io/ttl: "120" 
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.${SECRET_DOMAIN_2}/oauth2/start
       ## @param ingress.tls Enable TLS configuration for the hostname defined at `ingress.hostname` parameter
       ## TLS certificates will be retrieved from a TLS secret with name: `{{- printf "%s-tls" .Values.ingress.hostname }}`
       ## You can:
