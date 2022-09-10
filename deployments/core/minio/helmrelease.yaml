@@ -230,7 +230,7 @@ spec:
     provisioning:
       ## @param provisioning.enabled Enable MinIO&reg; provisioning Job
       ##
-      enabled: false
+      enabled: true
       ## @param provisioning.schedulerName Name of the k8s scheduler (other than default) for MinIO&reg; provisioning
       ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
       ##
@@ -310,8 +310,8 @@ spec:
       ##     # When false, the policies will be added to the existing.
       ##     setPolicies: false
       users:
-        - username: test-username
-          password: test-password
+        - username: ${MINIO_ACCESS_KEY}
+          password: ${MINIO_SECRET_KEY}
           disabled: false
           policies:
             - readwrite
