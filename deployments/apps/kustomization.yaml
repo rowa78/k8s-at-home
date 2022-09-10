@@ -9,8 +9,8 @@ resources:
   #- chartmuseum
   #- eve
   #- minecraft
-  - seat
+  #- seat
   - hajimari
   - freshrss
-  - paperless
-  - rocketchat
+  #- paperless
+  #- rocketchat
