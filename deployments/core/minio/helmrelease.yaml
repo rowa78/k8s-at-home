@@ -320,9 +320,6 @@ spec:
           # When set to true, it will replace all policies with the specified.
           # When false, the policies will be added to the existing.
           setPolicies: false
-          # When set to true, it will replace all policies with the specified.
-          # When false, the policies will be added to the existing.
-          setPolicies: false
       ## @param provisioning.usersExistingSecrets Array if existing secrets containing MinIO&reg; users to be provisioned. Can be used in addition to provisioning.users.
       ## https://docs.min.io/docs/minio-admin-complete-guide.html#user
       ##
