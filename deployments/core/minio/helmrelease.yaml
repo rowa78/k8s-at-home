@@ -111,7 +111,7 @@ spec:
     auth:
       ## @param auth.rootUser MinIO&reg; root username
       ##
-      rootUser: admin
+      rootUser: ronny
       ## @param auth.rootPassword Password for MinIO&reg; root user
       ##
       rootPassword: ${MINIO_ADMIN_PASSWORD}
@@ -131,7 +131,7 @@ spec:
     ## e.g:
     ## defaultBuckets: "my-bucket, my-second-bucket"
     ##
-    defaultBuckets: ""
+    defaultBuckets: "loki, thanos"
     ## @param disableWebUI Disable MinIO&reg; Web UI
     ## ref: https://github.com/minio/minio/tree/master/docs/config/#browser
     ##
@@ -930,7 +930,7 @@ spec:
         - ReadWriteOnce
       ## @param persistence.size PVC Storage Request for MinIO&reg; data volume
       ##
-      size: 25Gi
+      size: 100Gi
       ## @param persistence.annotations Annotations for the PVC
       ##
       annotations: {}
