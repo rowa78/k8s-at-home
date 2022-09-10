@@ -905,7 +905,7 @@ spec:
       ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
       ##   GKE, AWS & OpenStack)
       ##
-      storageClass: ""
+      storageClass: "lomghorn-backup"
       ## @param persistence.mountPath Data volume mount path
       ##
       mountPath: /data
@@ -915,7 +915,7 @@ spec:
         - ReadWriteOnce
       ## @param persistence.size PVC Storage Request for MinIO&reg; data volume
       ##
-      size: 8Gi
+      size: 25Gi
       ## @param persistence.annotations Annotations for the PVC
       ##
       annotations: {}
