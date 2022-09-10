@@ -114,7 +114,7 @@ spec:
       rootUser: admin
       ## @param auth.rootPassword Password for MinIO&reg; root user
       ##
-      rootPassword: ""
+      rootPassword: ${MINIO_ADMIN_PASSWORD}
       ## @param auth.existingSecret Use existing secret for credentials details (`auth.rootUser` and `auth.rootPassword` will be ignored and picked up from this secret). The secret has to contain the keys `root-user` and `root-password`)
       ##
       existingSecret: ""
@@ -309,7 +309,17 @@ spec:
       ##     # When set to true, it will replace all policies with the specified.
       ##     # When false, the policies will be added to the existing.
       ##     setPolicies: false
-      users: []
+      users: 
+        - username: ${MINIO_ACCESS_KEY}
+          password: ${MINIO_SECRET_KEY}
+          disabled: false
+          policies:
+            - readwrite
+            - consoleAdmin
+            - diagnostics
+      ##     # When set to true, it will replace all policies with the specified.
+      ##     # When false, the policies will be added to the existing.
+      ##     setPolicies: false
       ## @param provisioning.usersExistingSecrets Array if existing secrets containing MinIO&reg; users to be provisioned. Can be used in addition to provisioning.users.
       ## https://docs.min.io/docs/minio-admin-complete-guide.html#user
       ##
@@ -1030,7 +1040,7 @@ spec:
       serviceMonitor:
         ## @param metrics.serviceMonitor.enabled If the operator is installed in your cluster, set to true to create a Service Monitor Entry
         ##
-        enabled: false
+        enabled: true
         ## @param metrics.serviceMonitor.namespace Namespace which Prometheus is running in
         ##
         namespace: ""
