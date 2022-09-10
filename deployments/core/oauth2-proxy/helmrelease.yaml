@@ -19,10 +19,8 @@ spec:
   values:
     image:
       repository: "quay.io/oauth2-proxy/oauth2-proxy"
-      tag: "v7.2.0-armv6"
+      tag: "v7.3.0"
     replicaCount: 1
-    nodeSelector: 
-      kubernetes.io/arch: arm64
     ingress:
       enabled: true
       path: /oauth2
