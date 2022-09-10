@@ -45,24 +45,18 @@ spec:
             ignore:              
               - kube-system
           events:
-            - create
-            - delete
+            - error
         - name: v1/services
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: apps/v1/deployments
           namespaces:
             include:
               - all
           events:
-            - create
-            - update
-            - delete
             - error
           updateSetting:
             includeDiff: true
@@ -73,9 +67,6 @@ spec:
             include:
               - all
           events:
-            - create
-            - update
-            - delete
             - error
           updateSetting:
             includeDiff: true
@@ -86,16 +77,12 @@ spec:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: v1/nodes
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: v1/namespaces
           namespaces:
@@ -110,24 +97,18 @@ spec:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: v1/persistentvolumeclaims
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: v1/secrets
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         # - name: v1/configmaps
         #   namespaces:
@@ -143,10 +124,7 @@ spec:
             include:
               - all
           events:
-            - create
-            - delete
             - error
-            - update
           updateSetting:
             includeDiff: true
             fields:
@@ -173,41 +151,30 @@ spec:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: rbac.authorization.k8s.io/v1/rolebindings
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: rbac.authorization.k8s.io/v1/clusterroles
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: rbac.authorization.k8s.io/v1/clusterrolebindings
           namespaces:
             include:
               - all
           events:
-            - create
-            - delete
             - error
         - name: velero.io/v1/backups
           namespaces:
             include:
               - all
           events:
-            - create
-            - update
-            - delete
             - error
           updateSetting:
             includeDiff: true
