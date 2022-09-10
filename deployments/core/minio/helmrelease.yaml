@@ -905,7 +905,7 @@ spec:
       ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
       ##   GKE, AWS & OpenStack)
       ##
-      storageClass: "lomghorn-backup"
+      storageClass: "longhorn-backup"
       ## @param persistence.mountPath Data volume mount path
       ##
       mountPath: /data
