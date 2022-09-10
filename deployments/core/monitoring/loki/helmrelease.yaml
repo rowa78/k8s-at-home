@@ -56,10 +56,11 @@ spec:
           shared_store: s3
         aws:
           bucketnames: loki
-          endpoint: minio.${SECRET_DOMAIN}
+          endpoint: minio.minio.svc.cluster.local:9000
           access_key_id: "${MINIO_ACCESS_KEY}"
           secret_access_key: "${MINIO_SECRET_KEY}"
-          s3forcepathstyle: true       
+          s3forcepathstyle: true
+          insecure: true
       limits_config:
         enforce_metric_name: false
         reject_old_samples: true
