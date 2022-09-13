@@ -242,7 +242,7 @@ spec:
 #        storageSpec:
 #          volumeClaimTemplate:
 #            spec:
-#              storageClassName: longhorn
+#              storageClassName: nfs-client
 #              resources:
 #                requests:
 #                  storage: 10Gi
@@ -258,7 +258,7 @@ spec:
 #                requests:
 #                  storage: 15Gi
 #              volumeMode: Filesystem
-#              storageClassName: longhorn
+#              storageClassName: nfs-client
         thanos:
           image: quay.io/thanos/thanos:v0.27.0
           version: v0.24.0
