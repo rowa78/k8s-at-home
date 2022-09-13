@@ -5,7 +5,7 @@ resources:
   - cert-manager.yaml
   - ingress-nginx.yaml  
   - cattle-system.yaml  
-  - longhorn-system.yaml
+  #- longhorn-system.yaml
   - snapshot-controller.yaml  
   - monitoring.yaml
   - networking.yaml
@@ -18,7 +18,7 @@ resources:
   - authentik.yaml
   - oauth2-proxy.yaml
   - hass.yaml
-  - harbor.yaml
+  #- harbor.yaml
   - jenkins.yaml
   - nexus.yaml
   - chartmuseum.yaml
