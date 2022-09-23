@@ -42,3 +42,4 @@ spec:
 
       # Method used to reclaim an obsoleted volume
       reclaimPolicy: Delete
+
