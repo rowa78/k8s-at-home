@@ -81,7 +81,7 @@ spec:
           - --auth
           - "none"
         ingress:
-          enabled: true
+          enabled: false
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/auth-url: "https://auth.${SECRET_DOMAIN_2}/oauth2/auth"
