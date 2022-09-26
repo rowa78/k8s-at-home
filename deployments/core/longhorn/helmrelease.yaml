@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: longhorn
-      version: 100.1.2+up1.2.4
+      version: 100.2.2+up1.3.1
       sourceRef:
         kind: HelmRepository
         name: rancher-charts-release-2-6

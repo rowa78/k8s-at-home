@@ -10,12 +10,7 @@ all:
       hosts:
         master1.rwcloud.org:
         master2.rwcloud.org:
-        master3.rwcloud.org:
-    pi_master:
-      hosts:
-        pi-0:
-        pi-1:
-        pi-2:
+        master3.rwcloud.org:            
     public_worker:
       hosts:
         worker1.rwcloud.org:
@@ -24,9 +19,10 @@ all:
       hosts:
         pc-0:
         pc-1:
-    pi_worker:
-      hosts:
-        pi-3:
+        pi-0:
+        pi-1:
+        pi-2:
+        pi-3:        
     worker:
       children:
         public_worker:
@@ -36,10 +32,6 @@ all:
         master:
         public_worker:
         local_worker:
-    pi_k3s_cluster:
-      children:
-        pi_master:
-        pi_worker:
     public_nodes:
       children:
         loadbalancer:
