@@ -43,7 +43,7 @@ spec:
         ## If undefined (the default) or set to null, no storageClassName spec is
         ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
         ##   GKE, AWS & OpenStack)
-        storageClass: "nfs-client"
+        storageClass: "longhorn"
         accessMode: ReadWriteOnce
         size: 100Mi
         ## Do not delete the pvc upon helm uninstall
@@ -61,7 +61,7 @@ spec:
         ## If undefined (the default) or set to null, no storageClassName spec is
         ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
         ##   GKE, AWS & OpenStack)
-        storageClass: "nfs-client"
+        storageClass: "longhorn"
         accessMode: ReadWriteOnce
         size: 100Mi
         ## Do not delete the pvc upon helm uninstall
