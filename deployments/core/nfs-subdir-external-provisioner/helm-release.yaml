@@ -35,7 +35,7 @@ spec:
       defaultClass: true
       # Set a StorageClass name
       # Ignored if storageClass.create is false
-      name: nfs-client
+      name: nfs-client-diskstation
 
       # Allow volume to be expanded dynamically
       allowVolumeExpansion: true
