@@ -44,3 +44,6 @@ spec:
       enabled: true
       restricted_access: |-
         ${EMAIL}
+    extraEnv: 
+      - name: OAUTH2_PROXY_SCOPE
+        value: "user:email"
