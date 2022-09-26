@@ -145,16 +145,18 @@ spec:
       postgresqlPassword: "${SECRET_HASS_POSTGRES_PW}"
       postgresqlDatabase: "hass"
       persistence:
-        enabled: true
-        storageClass: "longhorn"
-        accessModes:
-          - ReadWriteOnce
+        primary:
+          enabled: true
+          storageClass: "longhorn"
+          accessModes:
+            - ReadWriteOnce
 
     influxdb:                
       enabled: true
       architecture: standalone
       database: home_assistant
       authEnabled: false     
+      storageClass: "longhorn"
       persistence:
         enabled: true
         storageClass: "longhorn"
