@@ -146,18 +146,18 @@ spec:
       postgresqlDatabase: "hass"
       persistence:
         enabled: true
-        storageClass: "nfs-client"
+        storageClass: "longhorn"
         accessModes:
           - ReadWriteOnce
 
     influxdb:                
-      enabled: false
+      enabled: true
       architecture: standalone
       database: home_assistant
       authEnabled: false     
       persistence:
         enabled: true
-        # storageClass: ""
+        storageClass: "longhorn"
       size: 30Gi
       influxdb:
         nodeSelector: 
