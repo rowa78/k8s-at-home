@@ -141,11 +141,11 @@ spec:
       primary:
         nodeSelector: 
           kubernetes.io/arch: amd64
-      postgresqlUsername: "hass"
-      postgresqlPassword: "${SECRET_HASS_POSTGRES_PW}"
-      postgresqlDatabase: "hass"
-      persistence:
-        primary:
+        postgresqlUsername: "hass"
+        postgresqlPassword: "${SECRET_HASS_POSTGRES_PW}"
+        postgresqlDatabase: "hass"
+        
+        persistence:      
           enabled: true
           storageClass: "longhorn"
           accessModes:
